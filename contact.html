@@ -3,7 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Form</title>
+
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/form.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/form/validation.js" type="module"></script>
+    <script src="js/loading/loading.js" type="module"></script>
   </head>
-  <body></body>
+  <header>
+    <img
+      src="images/Halo-logo.png"
+      class="logo"
+      alt="Logo for The Gaming Blog"
+    />
+    <nav>
+      <ul class="unorder-list">
+        <li class="menu-list">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="menu-list"><a href="bloglist.html">Bloglist</a></li>
+        <li class="menu-list"><a href="about.html">About</a></li>
+        <li class="menu-list"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <body>
+    <div id="container" class="blog-container">
+      <h4>Loading...</h4>
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <div>
+      <div class="header"><h2>Contact Us</h2></div>
+      <form class="form" id="form">
+        <div class="form-control">
+          <label>Name</label>
+          <input
+            type="text"
+            placeholder="Ola Norman"
+            id="username"
+            minlength="5"
+          />
+          <i class="fas fa-check-circle">&#10003;</i>
+          <i class="fas fa-exclamation-circle">&#33;</i>
+          <small>Error Massage</small>
+        </div>
+        <div class="form-control">
+          <label>Email</label>
+          <input type="text" placeholder="ola-norman@gmail.com" id="email" />
+          <i class="fas fa-check-circle">&#10003;</i>
+          <i class="fas fa-exclamation-circle">&#33;</i>
+          <small>Error Massage</small>
+        </div>
+        <div class="form-control">
+          <label>Subject</label>
+          <input type="text" placeholder="Topic" id="subject" minlength="15" />
+          <i class="fas fa-check-circle">&#10003;</i>
+          <i class="fas fa-exclamation-circle">&#33;</i>
+          <small>Error Massage</small>
+        </div>
+        <div class="form-control">
+          <label for="text">Text</label>
+          <textarea id="text" placeholder="Text" minlength="25"></textarea>
+          <i class="fas fa-check-circle">&#10003;</i>
+          <i class="fas fa-exclamation-circle">&#33;</i>
+          <small>Error Message</small>
+        </div>
+
+        <button>Send</button>
+      </form>
+    </div>
+  </body>
 </html>

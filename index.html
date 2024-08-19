@@ -4,8 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="api/api.js" type="module"></script>
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/blog.js" type="module"></script>
   </head>
-  <body></body>
+  <header>
+    <img
+      src="images/Halo-logo.png"
+      class="logo"
+      alt="Logo for The Gaming Blog"
+    />
+    <nav>
+      <ul class="unorder-list">
+        <li class="menu-list">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="menu-list"><a href="bloglist.html">Bloglist</a></li>
+        <li class="menu-list"><a href="about.html">About</a></li>
+        <li class="menu-list"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <body>
+    <div id="container" class="blog-container">
+      <h4>Loading...</h4>
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    <div class="carousel-container" id="carousel-container"></div>
+
+    <!-- <section aria-label="Newest Blog">
+      <div class="carousel" data-carousel>
+        <button class="carousel-button prev" data-carousel-button="prev">&#8617</button>
+        <button class="carousel-button next" data-carousel-button="next">&#8618</button>
+        <ul data-slides>
+          <li class="slide" data-active>
+            <img src="http://cmsca.local/wp-content/uploads/2024/05/gaming-culture.jpg" alt="Blog Images 1">
+          </li>
+          <li class="slide">
+            <img src="http://cmsca.local/wp-content/uploads/2024/05/Design-uten-navn-3.jpg" alt="Blog Images 2">
+          </li>
+          <li class="slide">
+            <img src="http://cmsca.local/wp-content/uploads/2024/05/Design-uten-navn-2-1.jpg" alt="Blog Images 3">
+          </li>
+          <li class="slide">
+            <img src="http://cmsca.local/wp-content/uploads/2024/05/ghost-of-tsushima-jin-sakai-approaching-enemies-4k-1xhzjfiys7udfsqm-scaled.jpg" alt="Blog Images 4">
+          </li>
+        </ul>
+      </div>
+    </section> -->
+  </body>
+  <!-- <footer>
+    <nav>
+      <ul class="unorder-list">
+        <li class="menu-list">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="menu-list"><a href="bloglist.html">Bloglist</a></li>
+        <li class="menu-list"><a href="about.html">About</a></li>
+        <li class="menu-list"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </footer> -->
 </html>
