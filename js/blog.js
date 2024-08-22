@@ -1,102 +1,80 @@
-const url = "http://cmsca.local/wp-json/wp/v2/posts";
+// import { url } from "./fetch.js";
 
-async function getBlogs() {
+async function fetchBlog() {
   try {
     const response = await fetch(url);
-    const blogs = await response.json();
-
-    const resultsContainer = document.querySelector("#carouselcontainer");
-
-    resultsContainer.innerHTML = ""; // Clear the container
-
-    if (Array.isArray(blogs)) {
-      blogs.forEach(function (blog) {
-        // Assuming blog has the properties you're trying to access
-        const blogTitle = blog.title?.rendered || "No title"; // Safe access
-        const blogImageUrl =
-          blog._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-          "default.jpg"; // Safe access
-
-        resultsContainer.innerHTML += `
-          <section aria-label="Newest Blog">
-            <div class="carousel" data-carousel>
-              <button class="carousel-button prev" data-carousel-button="prev">&#8617</button>
-              <button class="carousel-button next" data-carousel-button="next">&#8618</button>
-              <ul data-slides>
-                <li class="slide" data-active>
-                  <img src="${blogImageUrl}" alt="Blog Images">
-                </li>
-              </ul>
-            </div>
-          </section>`;
-      });
-    } else {
-      console.error("Expected an array but got something else.");
-    }
+    const results = await response.json();
+    console.log(response);
+    console.log(results);
+    displayBlog(results);
   } catch (error) {
-    const resultsContainer = document.querySelector("#carouselcontainer");
-    resultsContainer.innerHTML = `<div class="error">An error occurred when calling the blogs API.</div>`;
+    const container = document.querySelector("#container");
+    container.innerHTML = "";
   }
 }
 
-getBlogs();
+fetchBlog();
 
-// import { url } from "./fetch.js";
+const url = "http://cmsca.local/wp-json/wp/v2/posts?_embed";
 
-// async function fetchBlog() {
-//   try {
-//     const response = await fetch(url);
-//     const results = await response.json();
-//     console.log(response);
-//     console.log(results);
-//     displayBlog(results);
-//   } catch (error) {
-//     const container = document.querySelector("#container");
-//     container.innerHTML =
-//       '<div class="error">An error occured fetching the blog</div>';
-//   }
-// }
+async function fetchAndCreateBlogs() {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const posts = await response.json();
 
-// fetchBlog();
+    const slidesContainer = document.querySelector("#slides");
 
-// function displayBlog(blogs) {
-//   container.innerHTML = "";
-//   blogs.forEach(function (blog) {
-//     const blogItem = createBlog(blog);
-//     container.append(blogItem);
-//   });
-// }
+    // Clear the container
+    slidesContainer.innerHTML = "";
 
-// function createBlog(blog) {
-//   const blogDiv = document.createElement("div");
-//   blogDiv.classList.add("blog");
+    // Create slides for each post
+    posts.forEach((post, index) => {
+      const slide = document.createElement("li");
+      slide.classList.add("slide");
+      if (index === 0) {
+        slide.setAttribute("data-active", "true");
+      }
 
-//   const linkElement = document.createElement("a");
-//   linkElement.href = "blog.html";
+      const imgElement = document.createElement("img");
+      const imageUrl =
+        post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+        "default-image.jpg";
+      imgElement.src = imageUrl;
+      imgElement.alt = post.title.rendered;
 
-//   const h1Element = document.createElement("h1");
-//   h1Element.textContent = blog.title.rendered;
+      slide.appendChild(imgElement);
+      slidesContainer.appendChild(slide);
+    });
 
-//   linkElement.appendChild(h1Element);
+    // Initialize carousel buttons
+    const buttons = document.querySelectorAll("[data-carousel-button]");
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const offset = button.dataset.carouselButton === "next" ? 1 : -1;
+        const slides = button
+          .closest("[data-carousel]")
+          .querySelector("[data-slides]");
+        const activeSlide = slides.querySelector("[data-active]");
+        let newIndex = [...slides.children].indexOf(activeSlide) + offset;
 
-//   // Add up to four images
-//   for (let i = 0; i < 4; i++) {
-//     if (
-//       blog._embedded &&
-//       blog._embedded["wp:featuredmedia"] &&
-//       blog._embedded["wp:featuredmedia"][i]
-//     ) {
-//       const imgElement = document.createElement("img");
-//       imgElement.src = blog._embedded["wp:featuredmedia"][i].source_url;
-//       imgElement.alt = blog.title.rendered;
-//       linkElement.appendChild(imgElement);
-//     }
-//   }
+        if (newIndex < 0) newIndex = slides.children.length - 1;
+        if (newIndex >= slides.children.length) newIndex = 0;
 
-//   blogDiv.appendChild(linkElement);
+        slides.children[newIndex].setAttribute("data-active", "true");
+        activeSlide.removeAttribute("data-active");
+      });
+    });
+  } catch (error) {
+    const resultsContainer = document.querySelector("#carousel-container");
+    resultsContainer.innerHTML = `<div class="error">An error occurred when calling the blogs API.</div>`;
+    console.error("Fetch error:", error); // Log the error to the console
+  }
+}
 
-//   return blogDiv;
-// }
+fetchAndCreateBlogs();
 
 const buttons = document.querySelectorAll("[data-carousel-button]");
 
