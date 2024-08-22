@@ -1,7 +1,14 @@
 
 
 
+
+div.about-container {
+    background-image: url(../images/warren-umoh-KB-7m9UGF-Y-unsplash.jpg);
+}
+
 p.about-us {
+    
     width: 50%;
+ 
     
 }
