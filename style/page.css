@@ -2,3 +2,11 @@ img.arcade {
     width: 30%;
     height: 200px;
 }
+
+div.about-container {
+    display: block;
+}
+
+p.about-us {
+    width: 50%;
+}
