@@ -51,7 +51,15 @@ function createBlog(blog) {
   blogDiv.append(h1Element);
 
   const contentParagraph = document.createElement("p");
-  contentParagraph.innerHTML = blog.content.rendered;
+  contentParagraph.classList.add("article-content");
+
+  // Ensure blog.content.rendered is valid
+  if (blog.content && blog.content.rendered) {
+    contentParagraph.innerHTML = blog.content.rendered;
+  } else {
+    contentParagraph.innerHTML = "Content not available"; // Fallback if content is missing
+  }
+
   blogDiv.append(contentParagraph);
 
   return blogDiv;

@@ -210,11 +210,13 @@ button:hover {
 /* For large desktop screens (1200px to 1920px) */
 @media (min-width: 1201px) and (max-width: 1920px) {
   .form {
-    left: 500px;
+    top: 20px;
+    left: 700px;
     width: 60%;
   }
 h2 {
-  left: 650px;
+  top: 20px;
+  left: 850px;
     font-size: 30px;
  
   }
