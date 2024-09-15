@@ -1,8 +1,8 @@
-const url = "http://cmsca.local/wp-json/wp/v2/posts?_embed";
+const apiUrl = "http://cmsca.local/wp-json/wp/v2/posts?_embed";
 
 async function fetchBlog() {
   try {
-    const response = await fetch(url);
+    const response = await fetch(apiUrl);
     const results = await response.json();
     displayBlogs(results);
   } catch (error) {
