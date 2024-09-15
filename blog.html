@@ -3,30 +3,87 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style/menu.css" />
+    <link rel="stylesheet" href="style/page.css" />
     <link rel="stylesheet" href="style/style.css" />
+    <script type="module" src="js/renderedProduct/article.js"></script>
     <title>Document</title>
   </head>
-  <header>
-    <img
-      src="images/Halo-logo.png"
-      class="logo"
-      alt="Logo for The Gaming Blog"
-    />
-    <nav>
-      <ul class="unorder-list">
-        <li class="menu-list">
-          <a href="index.html">Home</a>
-        </li>
-        <li class="menu-list"><a href="bloglist.html">Bloglist</a></li>
-        <li class="menu-list"><a href="about.html">About</a></li>
-        <li class="menu-list"><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+
   <body>
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <a href="#">
+            <img src="images/Halo-logo.png" alt="Logo for The Gaming Blog" />
+          </a>
+        </div>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <nav class="nav-menu">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="bloglist.html">Bloglist</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <div id="container" class="blog-container">
       <h4>Loading...</h4>
       <span class="loader"><span class="loader-inner"></span></span>
     </div>
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" />
+    </div>
+    <footer class="sticky-footer">
+      <div class="fotter">
+        <div class="footer-content">
+          <h3>Contact Us</h3>
+          <p>Email:Info@example.com</p>
+          <p>Phone:+121 56556 565556</p>
+          <p>Address:Your Address 123 street</p>
+        </div>
+        <div class="footer-content">
+          <h3>Quick Links</h3>
+          <ul class="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="bloglist.html">Bloglist</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-content">
+          <h3>Follow Us</h3>
+          <ul class="social-icons">
+            <li>
+              <a href=""><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href=""><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href=""><i class="fab fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href=""><i class="fab fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <p>&copy; 2024 your company . All rights reserved</p>
+      </div>
+    </footer>
   </body>
 </html>

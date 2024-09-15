@@ -1,142 +1,237 @@
 /* Form style */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-    background-color: #d5e6e9;
-   
+  font-family: roboto, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+
+
+/* Form container styling */
 .form {
-	padding: 30px 40px;	
+  position: relative;
+  top: 50px;
+  left: 500px;
+  padding: 30px 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
 }
 
+/* Form control styling */
 .form-control {
-	margin-bottom: 10px;
-	padding-bottom: 20px;
-	position: relative;
+  margin-bottom: 20px;
+  position: relative;
 }
 
+/* Label styling */
 .form-control label {
-	display: inline-block;
-	margin-bottom: 5px;
+  display: inline-block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
 }
 
-.form-control input {
-	border: 2px solid #f0f0f0;
-	border-radius: 4px;
-	display: block;
-	font-family: inherit;
-	font-size: 14px;
-	padding: 10px;
-	width: 100%;
+/* Input and textarea styling */
+.form-control input,
+.form-control textarea {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
-.form-control input:focus {
-	outline: 0;
-	border-color: #777;
+
+
+.form-control.error input,
+.form-control.error textarea,
+.form-control.error label.name-label {
+  position: relative;
+  top: 50px;
+  right: 300px;
 }
 
-.form-control.success input {
-	border-color: #2ecc71;
+/* Input and textarea focus state */
+.form-control input:focus,
+.form-control textarea:focus {
+  
+  outline: none;
+  border-color: #777;
 }
 
-.form-control.error input {
-	border-color: #e74c3c;
+/* Success and error state styling */
+.form-control.success input,
+.form-control.success textarea {
+  border-color: #2ecc71;
 }
 
+
+.form-control.error input,
+.form-control.error textarea {
+  border-color: #e74c3c;
+  
+}
+
+/* Adjust styling to prevent popping out */
+.form-control input,
+.form-control textarea {
+  transition: border-color 0.3s ease;
+}
+
+/* Icon styling */
 .form-control i {
-	visibility: hidden;
-	position: absolute;
-	top: 40px;
-	right: 10px;
+  visibility: hidden;
+  position: absolute;
+  top: 60%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 18px;
 }
 
 .form-control.success i.fa-check-circle {
-	color: #2ecc71;
-	visibility: visible;
+  color: #2ecc71;
+  visibility: visible;
 }
 
 .form-control.error i.fa-exclamation-circle {
-	color: #e74c3c;
-	visibility: visible;
+  position: relative;
+  right: 20px;
+  top: 20px;
+  color: #e74c3c;
+  visibility: visible;
 }
 
+/* Error message styling */
 .form-control small {
-	color: #e74c3c;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	visibility: hidden;
+  color: #e74c3c;
+  position: relative;
+ 
+  bottom: -60px; /* Adjust based on padding and input height */
+  right: 325px;
+  visibility: hidden;
 }
 
 .form-control.error small {
-	visibility: visible;
+  visibility: visible;
+}
+
+/* Head title styling */
+ h2 {
+  position: relative;
+  left: 600px;
+  top: 50px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  color: #333;
+}
+
+/* Button styling */
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #7cb2ac;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #a4d7c2;
 }
 
 
 
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+@media (max-width: 480px) {
+
+.form {
+  
+  left: 10px;
+}
+
+ h2 {
+  position: relative;
+  left: 50px;
+  font-size: 25px;
+}
+}
+
+@media (max-width: 600px) {
+  .form {
+    left: 20px;
+    width: 90%;
   }
 
-  input, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+}
 
-  textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    resize: none; /* Prevents the textarea from being resized */
+/* For portrait tablets and large phones (600px to 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .form {
+    left: 40px;
+    width: 80%;
   }
+ h2 {
+    font-size: 22px;
+    left: 150px;
+  }
+}
 
-  .form-control.error textarea {
-    border-color: #e74c3c; /* Red border color */
+/* For landscape tablets and small desktop screens (900px to 1200px) */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .form {
+    left: 300px;
+    width: 70%;
+  }
+  h2 {
+    left: 450px;
+    font-size: 26px;
+   
+  }
+}
+
+/* For large desktop screens (1200px to 1920px) */
+@media (min-width: 1201px) and (max-width: 1920px) {
+  .form {
+    left: 500px;
+    width: 60%;
+  }
+h2 {
+  left: 650px;
+    font-size: 30px;
+ 
+  }
+}
+
+/* For extra large screens (1920px and above) */
+@media (min-width: 1920px) {
+  .form {
+    left: 700px;
+  
+  }
+  h2  {
+    font-size: 36px;
+    left: 800px;
     
   }
-
-  .form-control.success textarea {
-    border-color: #2ecc71; /* Green border color */
-   
-  }
-
-
-  small {
-   
-    display: block;
-    margin-top: 8px;
-    color: red;
-    visibility: hidden;
-  }
-
-  .header h2 {
-    text-align: center;
-    margin-bottom: 2px;
-  }
-
-  button {
-    display: block;
-    width: 20%;
-    padding: 10px;
-    background-color: #7cb2ac;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #a4d7c2;
-  }
-
-
+}
 
 
 
