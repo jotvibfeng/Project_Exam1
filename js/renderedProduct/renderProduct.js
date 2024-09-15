@@ -4,8 +4,6 @@ async function fetchBlog() {
   try {
     const response = await fetch(url);
     const results = await response.json();
-    console.log(response);
-    console.log(results);
     displayBlogs(results);
   } catch (error) {
     const container = document.querySelector("#container");
@@ -50,9 +48,8 @@ function createBlog(blog) {
     imgElement.alt = blog.title.rendered;
     blogDiv.append(imgElement);
   } else {
-    // If there's no featured image, you can add a placeholder or skip the image
     const placeholder = document.createElement("img");
-    placeholder.src = "default-image.jpg"; // Path to your default image
+    placeholder.src = "default-image.jpg";
     placeholder.alt = "Placeholder Image";
     blogDiv.append(placeholder);
   }

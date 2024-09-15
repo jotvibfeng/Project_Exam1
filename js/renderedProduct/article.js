@@ -17,7 +17,6 @@ async function fetchSingleBlog() {
   try {
     const response = await fetch(`${baseUrl}/${articleId}?_embed`);
     const blog = await response.json();
-    console.log(blog);
     displaySingleBlog(blog);
   } catch (error) {
     const container = document.querySelector("#container");

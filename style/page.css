@@ -275,7 +275,6 @@ p.article-content {
     }
 
     h1.article-title {
-        width: 100%;
         font-size: 32px;
        left: 150px;
        top: 0px;
@@ -306,14 +305,7 @@ p.article-content {
         left: 400px;
     
        }
-    figure, img.wp-image-170 { 
-        height: 10vh;
-        width: 40%;
-        position: relative;
-        bottom: 400px;
-        left: 400px;
-    
-       }
+   
 
     h1.blog-title {
         bottom: 300px;

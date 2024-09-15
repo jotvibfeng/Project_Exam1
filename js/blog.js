@@ -4,8 +4,6 @@ async function fetchBlog() {
   try {
     const response = await fetch(url);
     const results = await response.json();
-    console.log(response);
-    console.log(results);
     displayBlog(results);
   } catch (error) {
     const container = document.querySelector("#container");
