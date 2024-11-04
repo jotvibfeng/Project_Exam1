@@ -1,8 +1,9 @@
-const apiUrl = "http://cmsca.local/wp-json/wp/v2/posts?_embed";
+const url =
+  "https://cors.noroff.dev/https://joakimfengaas.no/wp-json/wp/v2/posts/?_embed";
 
 async function fetchBlog() {
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(url);
     const results = await response.json();
     displayBlogs(results);
   } catch (error) {
